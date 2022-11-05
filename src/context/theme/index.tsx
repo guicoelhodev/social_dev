@@ -10,7 +10,7 @@ import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../../styles/theme";
 
 export interface IThemeContext {
-  theme: string;
+  theme: "dark" | "light";
   setTheme: Dispatch<SetStateAction<string>>;
   themeToggler: () => void;
 }
@@ -24,7 +24,7 @@ export const ThemeContext = createContext<IThemeContext | {}>({});
 export const ThemeContextProvider: FC<IThemeContextProvider> = ({
   children,
 }) => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   const themeToggler = () => {
     return theme === "light" ? setTheme("dark") : setTheme("light");
