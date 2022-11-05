@@ -25,13 +25,35 @@ body {
 
   h1 {
     color: ${({ theme }) => theme.primaryColor};
+    font-size: var(--title-lg);
   }
 
   h2 {
     color: ${({ theme }) => theme.secondaryColor};
+    font-size: var(--title-md);
   }
 
- 
+  p, span {
+    color: ${({ theme }) => theme.terciaryColor};
+    font-size: 1rem;
+  }
+
+  button {
+    cursor:pointer;
+    border: 1px solid ${({ theme }) => theme.terciaryColor};
+  }
+
+  li {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  svg {
+    fill: ${({ theme }) => theme.terciaryColor};
+  }
 }
 
 :root {
@@ -52,5 +74,37 @@ body {
 
   --white: #F0F0F0;
   --whitesmoke: #E9E9E9;
+
+  --title-lg: 1.5rem;
+  --title-md: 1.25rem;
+  --title-sm: 1.125rem;
+  --title-xsm: 1rem;
+
+  // text
+
+  --text-md: 1rem;
+  --text-sm: 0.875rem;
+
+  // font--weight
+    
+  --light-monterrat: 400;
+  --medium-montserrat: 500;
+  --semibold-montserrat: 600;
+
+  --radius: 8px;
+
+}
+
+html {
+
+  @media (max-width: 2000px){
+    font-size: 16px;
+  }
+  @media (max-width:810px){
+    font-size: 14px;
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
 }
 `;
