@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react";
-import { ThemeContextProvider } from "./theme";
+import { FC, ReactNode } from 'react';
+import { ThemeContextProvider } from './theme';
 
 interface IGlobalContext {
   children: ReactNode;

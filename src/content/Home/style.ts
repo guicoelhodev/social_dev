@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   height: 100%;
@@ -21,9 +21,9 @@ export const AdviceContainer = styled.main`
   grid-template-rows: auto;
   row-gap: 0.5rem;
   grid-template-areas:
-    "title    title     theme"
-    "subtitle subtitle  gif"
-    "content  content   gif";
+    'title    title     theme'
+    'subtitle subtitle  gif'
+    'content  content   gif';
 
   .confused-girl {
     grid-area: gif;

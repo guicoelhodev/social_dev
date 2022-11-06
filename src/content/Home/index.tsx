@@ -1,12 +1,12 @@
-import { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useContext } from "react";
-import { IThemeContext, ThemeContext } from "../../context/theme";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
-import Figma from "../../assets/svg/figma_logo.png";
+import { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useContext } from 'react';
+import { IThemeContext, ThemeContext } from '../../context/theme';
+import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import Figma from '../../assets/svg/figma_logo.png';
 
-import * as S from "./style";
+import * as S from './style';
 
 const Home: NextPage = () => {
   const { theme, themeToggler } = useContext(ThemeContext) as IThemeContext;
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
         <S.ToggleTheme>
           <button onClick={() => themeToggler()}>
-            {theme === "light" ? <BsFillSunFill /> : <BsFillMoonFill />}
+            {theme === 'light' ? <BsFillSunFill /> : <BsFillMoonFill />}
           </button>
         </S.ToggleTheme>
         <h2>We are working hard to create a first version of social dev app</h2>
@@ -48,7 +48,7 @@ const Home: NextPage = () => {
           className="confused-girl"
           width={200}
           height={200}
-          src={"https://media.tenor.com/zVtSqLENqIIAAAAj/jinx-flipzflops.gif"}
+          src={'https://media.tenor.com/zVtSqLENqIIAAAAj/jinx-flipzflops.gif'}
         />
       </S.AdviceContainer>
     </S.Container>
