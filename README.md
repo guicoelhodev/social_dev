@@ -2,4 +2,4 @@
 
 ## Status: In progress ⚠️⚠️
 
-### Go back in a few days if you want to see te readme complete
+### Go back in a few days if you want to see the readme complete
