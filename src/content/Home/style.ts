@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 100%;
   min-height: 100vh;
   width: 100%;
+  padding: 1rem;
 
   display: grid;
   place-items: center;
