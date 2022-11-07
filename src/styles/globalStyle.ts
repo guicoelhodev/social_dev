@@ -41,6 +41,10 @@ body {
   button {
     cursor:pointer;
     border: 1px solid ${({ theme }) => theme.terciaryColor};
+
+    :focus {
+      outline: 1px solid ${({ theme }) => theme.primaryColor};  
+    }
   }
 
   li {
@@ -95,6 +99,10 @@ body {
   --radius: 8px;
   --min-radius: 5px;
 
+  // fonts
+
+  --montserrat: 'Montserrat';
+  --oxanium: 'Oxanium';
 }
 
 html {
