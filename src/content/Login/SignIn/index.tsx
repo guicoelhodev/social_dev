@@ -2,6 +2,9 @@ import React, { ChangeEvent, useState } from 'react';
 import { TextInput } from '../../../components/UI/inputs';
 import { yupValidateFn } from '../../../utils/yupValidate';
 import * as yup from 'yup';
+import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import Image from 'next/image';
 import * as S from './style';
 
 type IUserLogin = {
@@ -39,7 +42,33 @@ export const SignIn: React.FC = () => {
 
   return (
     <S.Container>
-      <header>Thats my header</header>
+      <header>
+        <h2>SOCIAL DEV</h2>
+        <Image
+          src={SmallSocialLogo}
+          alt="social logo small size to decorate header login"
+          height={60}
+          width={60}
+          className="logo-sm"
+        />
+      </header>
+
+      <S.ExternalLogin>
+        <p>Sign In with your account</p>
+
+        <button>
+          <AiFillGithub />
+        </button>
+
+        <button>
+          <AiFillLinkedin />
+        </button>
+      </S.ExternalLogin>
+      <aside>
+        <span />
+        <p>OR</p>
+        <span />
+      </aside>
       <article>
         <TextInput
           label="email"
@@ -59,8 +88,14 @@ export const SignIn: React.FC = () => {
           error={yupError.password}
         />
 
-        <button onClick={verifyLoginFn}>Click here</button>
+        <S.SignInButton onClick={verifyLoginFn}>Log In</S.SignInButton>
       </article>
+
+      <footer>
+        <p>
+          Did you forget the password? <a href="#">Click here</a>
+        </p>
+      </footer>
     </S.Container>
   );
 };
