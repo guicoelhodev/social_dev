@@ -33,7 +33,7 @@ body {
     font-size: var(--title-md);
   }
 
-  p, span {
+  p, span, label {
     color: ${({ theme }) => theme.terciaryColor};
     font-size: 1rem;
   }
@@ -63,7 +63,8 @@ body {
 
   --pink-200: #FF6897;
 
-
+  --red-400: #FF5454;
+  
   --black-100: #1E1E1E;
   --black-150: #252525;
   
@@ -92,6 +93,7 @@ body {
   --semibold-montserrat: 600;
 
   --radius: 8px;
+  --min-radius: 5px;
 
 }
 
