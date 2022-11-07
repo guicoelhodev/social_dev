@@ -86,6 +86,7 @@ export const ExternalLogin = styled.section`
 `;
 
 export const SignInButton = styled.button`
+  margin-top: 1rem;
   background-color: ${({ theme }) => theme.primaryColor};
   padding: 0.4rem;
   border-radius: var(--min-radius);
