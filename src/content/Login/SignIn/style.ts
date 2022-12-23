@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  height: 100%;
 
+  
+  height: 100vh;
+  position: fixed;
   display: flex;
   justify-content: center;
   flex-direction: column;

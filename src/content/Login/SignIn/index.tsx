@@ -1,8 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
-import { TextInput } from '../../../components/UI/inputs';
-import { yupValidateFn } from '../../../utils/yupValidate';
-import * as yup from 'yup';
+import { PasswordInput, TextInput } from '@components/UI/inputs';
+import { yupValidateFn } from '@utilis/yupValidate';
+import * as yup from 'yup'
 import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
+
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import Image from 'next/image';
 import * as S from './style';
@@ -79,7 +80,7 @@ export const SignIn: React.FC = () => {
           }}
           error={yupError.email}
         />
-        <TextInput
+        <PasswordInput
           label="passowrd"
           value={userLogin.password}
           onChange={(e) => {
