@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useId, RefObject, forwardRef, FC } from 'react';
+import React, { ChangeEvent, useId, FC } from 'react';
 import * as S from './style';
 
 interface ITextInput {
@@ -12,14 +12,14 @@ interface ITextInput {
   error?: string;
 }
 
-type IInputType = 'email' | 'password' | 'text';
+type IInputType = 'email' | 'text';
 
 export const TextInput: FC<ITextInput> = (props) => {
   const inputId = useId();
   return (
     <S.Container>
       <label htmlFor={inputId}>{props.label}</label>
-      <input {...props} type="text" id={props.id ? props.id : inputId} />
+      <input {...props} type={props.type} id={props.id ? props.id : inputId} />
       <div>{props.error}</div>
     </S.Container>
   );
