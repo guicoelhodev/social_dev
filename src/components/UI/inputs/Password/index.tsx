@@ -11,8 +11,9 @@ import * as S from './style';
 
 interface ITextInput {
   label: string;
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  register?: any;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   id?: string;
   placeholder?: string;
   defaultValue?: string;
@@ -29,6 +30,7 @@ export const PasswordInput: FC<ITextInput> = (props) => {
         {...props}
         type={viewPassword ? 'text' : 'password'}
         id={props.id ? props.id : inputId}
+        {...props.register}
       />
       <S.ViewPassword onClick={() => setViewPassword((prev) => !prev)}>
         {viewPassword ? <AiFillEye /> : <AiFillEyeInvisible />}

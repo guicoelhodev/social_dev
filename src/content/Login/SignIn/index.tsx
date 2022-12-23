@@ -1,12 +1,25 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import { PasswordInput, TextInput } from '@components/UI/inputs';
-import { yupValidateFn } from '@utilis/yupValidate';
-import * as yup from 'yup'
-import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
-
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
 import Image from 'next/image';
+
 import * as S from './style';
+import * as z from 'zod';
+
+const requiredField = 'This field is required';
+
+const shema = z.object({
+  email: z.string({ required_error: requiredField }).email({
+    message: 'Format email invalid',
+  }),
+  password: z.string({ required_error: requiredField }).min(8, {
+    message: 'Min 8 characters',
+  }),
+});
 
 type IUserLogin = {
   email: string;
@@ -14,32 +27,15 @@ type IUserLogin = {
 };
 
 export const SignIn: React.FC = () => {
-  const [userLogin, setUserLogin] = useState<IUserLogin>({
-    email: '',
-    password: '',
-  });
-  const [yupError, setYupError] = useState<any>({});
-
-  let yupSchema = yup.object().shape({
-    email: yup.string().email().required('Email is a required field'),
-    password: yup.string().required('Password is a required field'),
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<IUserLogin>({
+    resolver: zodResolver(shema),
   });
 
-  const getInputValue = (
-    { target }: ChangeEvent<HTMLInputElement>,
-    mode: 'email' | 'password'
-  ) => {
-    if (mode === 'email') {
-      setUserLogin((prev) => ({ ...prev, email: target.value }));
-    } else {
-      setUserLogin((prev) => ({ ...prev, password: target.value }));
-    }
-  };
-
-  const verifyLoginFn = async () => {
-    let result = await yupValidateFn(yupSchema, userLogin);
-    setYupError(result.errors);
-  };
+  const onSubmit = handleSubmit((data) => console.log('data'));
 
   return (
     <S.Container>
@@ -70,27 +66,21 @@ export const SignIn: React.FC = () => {
         <p>OR</p>
         <span />
       </aside>
-      <article>
+      <form onSubmit={onSubmit}>
         <TextInput
           label="email"
           type="email"
-          value={userLogin.email}
-          onChange={(e) => {
-            getInputValue(e, 'email');
-          }}
-          error={yupError.email}
+          register={register('email')}
+          error={errors.email?.message}
         />
         <PasswordInput
-          label="passowrd"
-          value={userLogin.password}
-          onChange={(e) => {
-            getInputValue(e, 'password');
-          }}
-          error={yupError.password}
+          label="password"
+          register={register('password')}
+          error={errors.password?.message}
         />
 
-        <S.SignInButton onClick={verifyLoginFn}>Log In</S.SignInButton>
-      </article>
+        <S.SignInButton onClick={() => {}}>Log In</S.SignInButton>
+      </form>
 
       <footer>
         <p>

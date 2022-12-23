@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-
-  
   height: 100vh;
   position: fixed;
   display: flex;
@@ -40,7 +38,7 @@ export const Container = styled.main`
     }
   }
 
-  article {
+  form {
     display: flex;
     flex-direction: column;
   }

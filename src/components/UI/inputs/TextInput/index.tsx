@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useId, FC } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 import * as S from './style';
 
 interface ITextInput {
   label: string;
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  register?: any;
   type?: IInputType;
   id?: string;
   placeholder?: string;
@@ -19,7 +20,11 @@ export const TextInput: FC<ITextInput> = (props) => {
   return (
     <S.Container>
       <label htmlFor={inputId}>{props.label}</label>
-      <input {...props} type={props.type} id={props.id ? props.id : inputId} />
+      <input
+        type={props.type}
+        id={props.id ? props.id : inputId}
+        {...props.register}
+      />
       <div>{props.error}</div>
     </S.Container>
   );

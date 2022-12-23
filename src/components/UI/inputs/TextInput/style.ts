@@ -24,7 +24,7 @@ export const Container = styled.div`
 
   div {
     padding-top: 0.2rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--red-400);
     height: 1rem;
   }

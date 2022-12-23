@@ -25,31 +25,29 @@ export const Container = styled.div`
 
   div {
     padding-top: 0.2rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: var(--red-400);
     height: 1rem;
   }
 `;
 
 export const ViewPassword = styled.button`
+  right: 6px;
+  top: 50%;
+  transform: translateY(calc(-50% + 0.3rem));
+  background-color: inherit;
+  position: absolute;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-color: transparent;
 
-right: 6px;
-top:50%;
-transform: translateY(calc(-50% + 0.3rem));
-background-color: inherit;
-position: absolute;
-width:1.6rem;
-height : 1.6rem;
-border-color: transparent;
+  :focus {
+    outline: 1px solid transparent;
+  }
 
-:focus {
-
-outline:1px solid transparent;
-}
-
-svg {
-  fill: ${({ theme }) => theme.primaryColor};
-  width:100%;
-  height: 100%;
-}
-`
+  svg {
+    fill: ${({ theme }) => theme.primaryColor};
+    width: 100%;
+    height: 100%;
+  }
+`;
