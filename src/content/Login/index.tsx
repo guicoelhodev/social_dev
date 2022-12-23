@@ -6,7 +6,8 @@ import * as S from './style';
 const LoginPage: NextPage = () => {
   return (
     <S.Container>
-      <Background />
+      {/* <Background /> */}
+      <section></section>
       <section>
         <SignIn />
       </section>

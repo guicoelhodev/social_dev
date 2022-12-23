@@ -16,9 +16,19 @@ const shema = z.object({
   email: z.string({ required_error: requiredField }).email({
     message: 'Format email invalid',
   }),
-  password: z.string({ required_error: requiredField }).min(8, {
-    message: 'Min 8 characters',
+  password: z.string({ required_error: requiredField }).min(1, {
+    message: requiredField,
   }),
+  // .string({ required_error: requiredField })
+
+  // .regex(new RegExp('.*[A-Z].*'), 'One uppercase character')
+  // .regex(new RegExp('.*[a-z].*'), 'One lowercase character')
+  // .regex(new RegExp('.*\\d.*'), 'One number')
+  // .regex(
+  //   new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*'),
+  //   'One special character'
+  // )
+  // .min(8, 'Must be at least 8 characters'),
 });
 
 type IUserLogin = {
@@ -68,13 +78,13 @@ export const SignIn: React.FC = () => {
       </aside>
       <form onSubmit={onSubmit}>
         <TextInput
-          label="email"
+          label="Email"
           type="email"
           register={register('email')}
           error={errors.email?.message}
         />
         <PasswordInput
-          label="password"
+          label="Password"
           register={register('password')}
           error={errors.password?.message}
         />
