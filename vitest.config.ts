@@ -22,6 +22,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, 'src/content'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@context': path.resolve(__dirname, 'src/context'),
+      '@auth': path.resolve(__dirname, 'src/@types/auth.d.ts'),
     },
   },
 });
