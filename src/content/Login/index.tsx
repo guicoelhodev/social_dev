@@ -1,11 +1,12 @@
 import { NextPage } from 'next';
-import { SignIn } from './SignIn';
+import { Background } from '@pages/Login/Background';
+import { SignIn } from '@pages/Login/SignIn';
 import * as S from './style';
 
 const LoginPage: NextPage = () => {
   return (
     <S.Container>
-      <section></section>
+      <Background />
       <section>
         <SignIn />
       </section>
