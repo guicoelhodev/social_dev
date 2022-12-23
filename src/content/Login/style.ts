@@ -7,4 +7,18 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr minmax(auto, 22rem);
   padding: 2rem;
+
+  @media (max-width:820px){
+    grid-template-columns: 1fr;
+
+    section:nth-child(1){
+      display: none;
+    }
+    
+     section:nth-child(2){
+      margin: 0 auto;
+      max-width: 500px;
+      width: 100%;
+    }
+  }
 `;
