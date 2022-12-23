@@ -7,8 +7,9 @@ import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
 import Figma from '../../assets/svg/figma_logo.png';
 
 import * as S from './style';
+import { NextPageAuthenticated } from '@auth';
 
-const Home: NextPage = () => {
+const Home: NextPageAuthenticated = () => {
   const { theme, themeToggler } = useContext(ThemeContext) as IThemeContext;
   return (
     <S.Container>
@@ -56,3 +57,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+Home.auth = true;
