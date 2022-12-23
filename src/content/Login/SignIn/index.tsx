@@ -3,6 +3,7 @@ import { PasswordInput, TextInput } from '@components/UI/inputs';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { signIn, getProviders } from 'next-auth/react';
 
 import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
 import Image from 'next/image';
@@ -19,16 +20,6 @@ const shema = z.object({
   password: z.string({ required_error: requiredField }).min(1, {
     message: requiredField,
   }),
-  // .string({ required_error: requiredField })
-
-  // .regex(new RegExp('.*[A-Z].*'), 'One uppercase character')
-  // .regex(new RegExp('.*[a-z].*'), 'One lowercase character')
-  // .regex(new RegExp('.*\\d.*'), 'One number')
-  // .regex(
-  //   new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*'),
-  //   'One special character'
-  // )
-  // .min(8, 'Must be at least 8 characters'),
 });
 
 type IUserLogin = {
@@ -63,11 +54,19 @@ export const SignIn: React.FC = () => {
       <S.ExternalLogin>
         <p>Sign In with your account</p>
 
-        <button>
+        <button
+          onClick={() =>
+            signIn('github', { callbackUrl: `${process.env.URL_APP}/home` })
+          }
+        >
           <AiFillGithub />
         </button>
 
-        <button>
+        <button
+          onClick={() =>
+            signIn('linkedin', { callbackUrl: `${process.env.URL_APP}/home` })
+          }
+        >
           <AiFillLinkedin />
         </button>
       </S.ExternalLogin>
