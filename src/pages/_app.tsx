@@ -3,28 +3,32 @@ import { GlobalProvider } from '../context';
 import { SessionProvider } from 'next-auth/react';
 import { GlobalStyles } from '@style/globalStyle';
 import { AuthComponent } from 'src/global/auth/AuthComponent';
-
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
 interface IAuthProps extends AppProps {
   Component: any;
 }
+
+const queryClient = new QueryClient();
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: IAuthProps) {
   return (
-    <GlobalProvider>
-      <SessionProvider session={session}>
-        <GlobalStyles />
-        <Component {...pageProps} />
+    <QueryClientProvider client={queryClient}>
+      <GlobalProvider>
+        <SessionProvider session={session}>
+          <GlobalStyles />
 
-        {Component.auth ? (
-          <AuthComponent>
+          {Component.auth ? (
+            <AuthComponent>
+              <Component {...pageProps} />
+            </AuthComponent>
+          ) : (
             <Component {...pageProps} />
-          </AuthComponent>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </SessionProvider>
-    </GlobalProvider>
+          )}
+        </SessionProvider>
+      </GlobalProvider>
+    </QueryClientProvider>
   );
 }
