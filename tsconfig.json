@@ -8,7 +8,8 @@
       "@context/*": ["src/context/*"],
       "@style/*": ["src/styles/*"],
       "@utilis/*": ["src/utils/*"],
-      "@auth": ["src/@types/auth.d.ts"]
+      "@auth": ["src/@types/auth.d.ts"],
+      "@services/*": ["src/global/services/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

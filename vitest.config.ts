@@ -23,6 +23,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@context': path.resolve(__dirname, 'src/context'),
       '@auth': path.resolve(__dirname, 'src/@types/auth.d.ts'),
+      '@services': path.resolve(__dirname, 'src/services'),
     },
   },
 });
