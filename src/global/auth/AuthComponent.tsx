@@ -10,11 +10,7 @@ export const AuthComponent: React.FC<IAuth> = ({ children }: IAuth) => {
   // if `{ required: true }` is supplied, `status` can only be "loading" or "authenticated"
   const { status, data } = useSession({ required: true });
 
-  // if (status === 'loading') return <S.Loading>Redirecionando</S.Loading>;
-
-  if (status === 'loading') {
-    return <p>Loading...</p>;
-  }
+  if (status === 'loading') return <S.Loading>Redirect...</S.Loading>;
 
   return <>{children}</>;
 };

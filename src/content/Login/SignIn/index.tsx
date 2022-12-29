@@ -3,7 +3,7 @@ import { PasswordInput, TextInput } from '@components/UI/inputs';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { signIn, getProviders } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 import SmallSocialLogo from '@assets/svg/social_logo_sm.svg';
 import Image from 'next/image';
@@ -38,8 +38,6 @@ export const SignIn: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => console.log('data'));
 
-  //console.log(`${process.env.URL_APP}/`);
-
   return (
     <S.Container>
       <header>
@@ -58,7 +56,9 @@ export const SignIn: React.FC = () => {
 
         <button
           onClick={() =>
-            signIn('github', { callbackUrl: `${process.env.URL_APP}/` })
+            signIn('github', {
+              callbackUrl: `${process.env.URL_APP}/firstAccess`,
+            })
           }
         >
           <AiFillGithub />
@@ -66,7 +66,9 @@ export const SignIn: React.FC = () => {
 
         <button
           onClick={() =>
-            signIn('linkedin', { callbackUrl: `${process.env.URL_APP}/` })
+            signIn('linkedin', {
+              callbackUrl: `${process.env.URL_APP}/firstAccess`,
+            })
           }
         >
           <AiFillLinkedin />

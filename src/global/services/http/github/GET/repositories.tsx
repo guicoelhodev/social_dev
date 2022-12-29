@@ -12,11 +12,15 @@ type IGithubRepo = {
   language: string;
   topics: string[];
 };
-export const useGetRepositories = (userName: string) => {
+export const useGetRepositories = () => {
+  let user = localStorage.getItem('@USER_CREDENTIALS');
+
+  let username = user ? JSON.parse(user).github_username : '';
+
   const { data, isLoading, isError } = useQuery<IGithubRepo[]>(
     'repositories',
     async () => {
-      const { data } = await GITHUB_API.get(`/users/${userName}/repos`);
+      const { data } = await GITHUB_API.get(`/users/${username}/repos`);
       return data;
     }
   );
