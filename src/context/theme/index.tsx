@@ -11,7 +11,7 @@ import { darkTheme, lightTheme } from '../../styles/theme';
 
 export interface IThemeContext {
   theme: 'dark' | 'light';
-  setTheme: Dispatch<SetStateAction<string>>;
+  setTheme: Dispatch<SetStateAction<'dark' | 'light'>>;
   themeToggler: () => void;
 }
 
@@ -19,7 +19,7 @@ interface IThemeContextProvider {
   children: ReactNode;
 }
 
-export const ThemeContext = createContext<IThemeContext | {}>({});
+export const ThemeContext = createContext<IThemeContext>(null!);
 
 export const ThemeContextProvider: FC<IThemeContextProvider> = ({
   children,

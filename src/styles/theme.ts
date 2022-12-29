@@ -1,4 +1,7 @@
+import { cssConfig } from './defaultCSS';
+
 export const darkTheme = {
+  ...cssConfig,
   primaryBg: 'var(--black-150)',
   secondaryBg: 'var(--black-100)',
   primaryColor: 'var(--green-400)',
@@ -8,6 +11,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
+  ...cssConfig,
   primaryBg: 'var(--whitesmoke)',
   secondaryBg: 'var(--white)',
   primaryColor: 'var(--green-200)',

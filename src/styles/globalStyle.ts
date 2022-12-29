@@ -1,27 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
-interface IGlobalTheme {
-  theme: {
-    primaryBg: string;
-    secondaryBg: string;
-    primaryColor: string;
-    secondaryColor: string;
-    terciaryColor: string;
-    grey300: string;
-  };
-}
-export const GlobalStyles = createGlobalStyle<IGlobalTheme>`
+export const GlobalStyles = createGlobalStyle`
 
 * {
     padding:0;
     margin:0;
     box-sizing: border-box;
+    transition: color, background-color 0.3s ease-in;
 }
 
 body {
   background-color: ${({ theme }) => theme.primaryBg};
   font-family: 'Montserrat', sans-serif;
-  transition: color, background-color 0.3s ease-in;
 
   h1 {
     color: ${({ theme }) => theme.primaryColor};
@@ -33,7 +23,7 @@ body {
     font-size: var(--title-md);
   }
 
-  p, span {
+  p, span, label {
     color: ${({ theme }) => theme.terciaryColor};
     font-size: 1rem;
   }
@@ -41,6 +31,10 @@ body {
   button {
     cursor:pointer;
     border: 1px solid ${({ theme }) => theme.terciaryColor};
+
+    /* :focus {
+      outline: 1px solid ${({ theme }) => theme.primaryColor};  
+    } */
   }
 
   li {
@@ -54,6 +48,7 @@ body {
   svg {
     fill: ${({ theme }) => theme.terciaryColor};
   }
+  
 }
 
 :root {
@@ -63,7 +58,8 @@ body {
 
   --pink-200: #FF6897;
 
-
+  --red-400: #FF5454;
+  
   --black-100: #1E1E1E;
   --black-150: #252525;
   
@@ -92,7 +88,12 @@ body {
   --semibold-montserrat: 600;
 
   --radius: 8px;
+  --min-radius: 5px;
 
+  // fonts
+
+  --montserrat: 'Montserrat';
+  --oxanium: 'Oxanium';
 }
 
 html {
@@ -107,4 +108,7 @@ html {
     font-size: 12px;
   }
 }
+
+
+
 `;
