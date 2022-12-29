@@ -106,3 +106,5 @@ const Profile: NextPageAuthenticated = () => {
 };
 
 export default Profile;
+
+Profile.auth = true;

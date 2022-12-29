@@ -4,11 +4,12 @@ import { SignIn } from '@pages/Login/SignIn';
 import { useSession } from 'next-auth/react';
 
 import * as S from './style';
+import { NextPageAuthenticated } from '@auth';
 
-const LoginPage: NextPage = () => {
-  const { data } = useSession();
+const LoginPage: NextPageAuthenticated = () => {
+  const { data, status } = useSession();
 
-  console.log(data);
+  console.log(status);
 
   return (
     <S.Container>
@@ -22,3 +23,5 @@ const LoginPage: NextPage = () => {
 };
 
 export default LoginPage;
+
+LoginPage.auth = false;

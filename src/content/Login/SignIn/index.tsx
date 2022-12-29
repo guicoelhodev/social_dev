@@ -38,6 +38,8 @@ export const SignIn: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => console.log('data'));
 
+  console.log(`${process.env.URL_APP}/`);
+
   return (
     <S.Container>
       <header>
@@ -54,17 +56,13 @@ export const SignIn: React.FC = () => {
       <S.ExternalLogin>
         <p>Sign In with your account</p>
 
-        <button
-          onClick={() =>
-            signIn('github', { callbackUrl: `${process.env.URL_APP}/home` })
-          }
-        >
+        <button onClick={() => signIn('github', { callbackUrl: '/' })}>
           <AiFillGithub />
         </button>
 
         <button
           onClick={() =>
-            signIn('linkedin', { callbackUrl: `${process.env.URL_APP}/home` })
+            signIn('linkedin', { callbackUrl: `${process.env.URL_APP}/` })
           }
         >
           <AiFillLinkedin />

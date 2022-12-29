@@ -30,7 +30,7 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
     {
       title: 'Home',
       icon: <AiFillHome />,
-      onClick: () => router.push('/home'),
+      onClick: () => router.push('/'),
     },
     {
       title: 'Add post',
