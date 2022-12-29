@@ -18,13 +18,7 @@ const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/login',
-  },
-  callbacks: {
-    async signIn({ user }) {
-      console.log('useaaar', user);
-
-      return true;
-    },
+    error: '/login',
   },
 };
 
