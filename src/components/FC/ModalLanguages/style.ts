@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: calc(600px - 5rem);
-  position: relative;
+  flex: 1;
+
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -10,8 +11,6 @@ export const Container = styled.div`
   footer {
     width: 100%;
     padding: 0.5rem 1rem;
-    position: absolute;
-    bottom: 0;
 
     display: flex;
     justify-content: flex-end;
@@ -22,12 +21,20 @@ export const Container = styled.div`
       background-color: ${(props) => props.theme.primaryColor};
       border-color: ${(props) => props.theme.primaryColor};
       border-radius: 5px;
+
+      p {
+        color: #000;
+      }
     }
   }
 `;
 
 export const SearchContainer = styled.article`
-  padding: 0 0.8rem;
+  z-index: 1;
+  background-color: ${(props) => props.theme.secondaryBg};
+  padding: 0.8rem;
+  position: sticky;
+  top: 0;
 
   input {
     width: 100%;
@@ -41,7 +48,7 @@ export const SearchContainer = styled.article`
   }
 `;
 export const GridIcons = styled.article`
-  height: calc(600px - 13rem);
+  flex: 1;
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(2, auto);
