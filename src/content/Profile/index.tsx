@@ -39,71 +39,72 @@ const Profile: NextPageAuthenticated = () => {
 
   return (
     <Layout>
-      {typeof window !== 'undefined' && (
-        <S.Container>
-          <S.ProfileSection>
-            <header>
-              <S.AvatarImage
-                src={data?.user?.image ? data.user.image : ''}
-                width={120}
-                height={120}
-                alt="avatar user image"
-              />
+      <S.Container>
+        <S.ProfileSection>
+          <header>
+            <S.AvatarImage
+              src={data?.user?.image ? data.user.image : ''}
+              width={120}
+              height={120}
+              alt="avatar user image"
+            />
 
-              <S.EditBtn>
-                <AiFillEdit />
-              </S.EditBtn>
-            </header>
-            <S.ProfileInfo>
-              <div>
-                <aside>
-                  <span>Name:</span>
-                  <p>{data?.user?.name}</p>
-                </aside>
+            <S.EditBtn>
+              <AiFillEdit />
+            </S.EditBtn>
+          </header>
+          <S.ProfileInfo>
+            <div>
+              <aside>
+                <span>Name:</span>
+                <p>{data?.user?.name}</p>
+              </aside>
 
-                <aside>
-                  <span>Job:</span>
-                  <p>{user.job}</p>
-                </aside>
-              </div>
+              <aside>
+                <span>Job:</span>
+                <p>{user.job}</p>
+              </aside>
+            </div>
 
-              <div>
-                <aside>
-                  <span>Email:</span>
-                  <p>{data?.user?.email}</p>
-                </aside>
-              </div>
-            </S.ProfileInfo>
-          </S.ProfileSection>
+            <div>
+              <aside>
+                <span>Email:</span>
+                <p>{data?.user?.email}</p>
+              </aside>
+            </div>
+          </S.ProfileInfo>
+        </S.ProfileSection>
 
-          <S.DescriptionSection>
-            <article>
-              <h3>Description</h3>
-              <div>
-                <p>{user?.description}</p>
-              </div>
-            </article>
-            <article>
-              <h3>Skills</h3>
-              <SimpleCarousel>
-                {user?.languages.map((item: string) => {
-                  let currentLanguage = transformLanguagesArray()[item];
+        <S.DescriptionSection>
+          <article>
+            <h3>Description</h3>
+            <div>
+              <p>{user?.description}</p>
+            </div>
+          </article>
+          <article>
+            <h3>Skills</h3>
+            <SimpleCarousel>
+              {user?.languages.map((item: string) => {
+                let currentLanguage = transformLanguagesArray()[item];
+                return (
+                  <li title={currentLanguage.name}>
+                    {<currentLanguage.icon />}
+                  </li>
+                );
+              })}
+            </SimpleCarousel>
+            <S.EditBtn size="sm" onClick={() => setLanguagesModal(true)}>
+              <AiFillEdit />
+            </S.EditBtn>
+          </article>
+        </S.DescriptionSection>
 
-                  return <li>{<currentLanguage.icon />}</li>;
-                })}
-              </SimpleCarousel>
-              <S.EditBtn size="sm" onClick={() => setLanguagesModal(true)}>
-                <AiFillEdit />
-              </S.EditBtn>
-            </article>
-          </S.DescriptionSection>
+        <RepositoryList />
+        <NetworkList />
 
-          <RepositoryList />
-          <NetworkList />
-
-          {languagesModal && <ModalLanguages setState={setLanguagesModal} />}
-        </S.Container>
-      )}
+        {languagesModal && <ModalLanguages setState={setLanguagesModal} />}
+      </S.Container>
     </Layout>
   );
 };
