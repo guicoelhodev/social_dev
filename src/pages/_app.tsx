@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 import { GlobalStyles } from '@style/globalStyle';
 import { AuthComponent } from 'src/global/auth/AuthComponent';
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import { getHeightPhone } from '@utilis/getHeightPhone';
 interface IAuthProps extends AppProps {
   Component: any;
 }
@@ -14,6 +15,7 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: IAuthProps) {
+  getHeightPhone();
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalProvider>

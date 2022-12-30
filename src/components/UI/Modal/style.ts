@@ -18,7 +18,7 @@ to {
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: ${(props) => props.theme.maxHeight};
   position: absolute;
   top: 0;
   left: 0;

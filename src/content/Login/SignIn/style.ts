@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  height: 100vh;
+  height: ${(props) => props.theme.maxHeight};
   position: fixed;
   display: flex;
   justify-content: center;

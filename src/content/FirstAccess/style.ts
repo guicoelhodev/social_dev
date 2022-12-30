@@ -11,7 +11,7 @@ const showSession = keyframes`
 `;
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: ${(props) => props.theme.maxHeight};
 
   display: grid;
   place-items: center;
