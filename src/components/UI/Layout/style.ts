@@ -35,7 +35,8 @@ export const NavigatePages = styled.nav`
   gap: 1rem;
 
   @media (max-width: 810px) {
-    top: calc(var(--doc-height) - 4rem);
+    //top: calc(var(--doc-height) - 4rem);
+    bottom: 0;
     width: 100%;
     height: 4rem;
     padding: 0;
