@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Loading = styled.div`
   color: ${(props) => props.theme.primaryColor};
   width: 100vw;
-  height: 100vh;
+  height: ${(props) => props.theme.maxHeight};
 
   display: grid;
   place-items: center;

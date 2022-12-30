@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   background-color: ${(props) => props.theme.primaryBg};
   width: 100%;
-  min-height: 100vh;
+  min-height: ${(props) => props.theme.maxHeight};
   height: 100%;
 `;
 
@@ -12,7 +12,7 @@ export const PageContainer = styled.div`
   max-width: 80rem;
   padding-right: 4rem;
   margin: 0 auto;
-  min-height: calc(100vh - 4rem);
+  min-height: calc(${(props) => props.theme.maxHeight} - 4rem);
 
   @media (max-width: 810px) {
     padding-right: 0;
@@ -27,7 +27,7 @@ export const NavigatePages = styled.nav`
   top: 4rem;
 
   width: 4rem;
-  height: 100vh;
+  height: ${(props) => props.theme.maxHeight};
 
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@ export const NavigatePages = styled.nav`
   gap: 1rem;
 
   @media (max-width: 810px) {
-    top: calc(100vh - 4rem);
+    top: calc(var(--doc-height) - 4rem);
     width: 100%;
     height: 4rem;
     padding: 0;
