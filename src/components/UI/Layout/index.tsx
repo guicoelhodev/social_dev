@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useState } from 'react';
 
 import SocialLogo from '@assets/svg/social_logo_sm.svg';
 
@@ -14,6 +14,7 @@ import { ThemeContext } from '@context/theme';
 import {
   AiFillHome,
   AiOutlinePlus,
+  AiOutlineUser,
   AiOutlineUsergroupAdd,
 } from 'react-icons/ai';
 import { useRouter } from 'next/router';
@@ -26,11 +27,22 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
   const { theme, themeToggler } = useContext(ThemeContext);
 
   const router = useRouter();
+
+  const getInitialProfile = () => {
+    if (router.pathname === '/') return 'Home';
+    return 'Profile';
+  };
+  const [activeTab, setActiveTab] = useState(getInitialProfile());
   const navList = [
     {
       title: 'Home',
       icon: <AiFillHome />,
       onClick: () => router.push('/'),
+    },
+    {
+      title: 'Profile',
+      icon: <AiOutlineUser />,
+      onClick: () => router.push('/profile'),
     },
     {
       title: 'Add post',
@@ -62,15 +74,20 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
       <S.PageContainer>{children}</S.PageContainer>
       <S.NavigatePages>
         {navList.map((item) => (
-          <S.ButtonNav onClick={item.onClick} title={item.title}>
+          <S.ButtonNav
+            onClick={() => {
+              setActiveTab(item.title);
+              item.onClick();
+            }}
+            title={item.title}
+            className={item.title === activeTab ? 'active' : ''}
+          >
             {item.icon}
+
+            <span>{item.title}</span>
           </S.ButtonNav>
         ))}
       </S.NavigatePages>
-      {/* <S.Footer>
-        <p>Visit our github page</p>
-        <p>V 1.0.0</p>
-      </S.Footer> */}
     </S.Container>
   );
 };
