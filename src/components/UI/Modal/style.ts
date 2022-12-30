@@ -41,6 +41,9 @@ export const Window = styled.section<IWindow>`
 
   background-color: ${(props) => props.theme.secondaryBg};
 
+  display: flex;
+  flex-direction: column;
+
   header {
     padding: 1rem;
     display: flex;
@@ -51,11 +54,11 @@ export const Window = styled.section<IWindow>`
     }
 
     button {
-      background-color: transparent;
+      background-color: inherit;
+      padding: 0;
       width: 2.2rem;
       aspect-ratio: 1/1;
       border: 0;
-
       display: grid;
       place-items: center;
 
@@ -64,5 +67,10 @@ export const Window = styled.section<IWindow>`
         height: 100%;
       }
     }
+  }
+
+  @media (max-width: 500px) {
+    aspect-ratio: ${({ aspectRatio }) => (aspectRatio ? aspectRatio : 1 / 2)};
+    max-height: 80vh;
   }
 `;

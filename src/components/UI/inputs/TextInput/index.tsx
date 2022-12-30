@@ -24,6 +24,7 @@ export const TextInput: FC<ITextInput> = (props) => {
         type={props.type}
         id={props.id ? props.id : inputId}
         {...props.register}
+        placeholder={props.placeholder}
       />
       <div>{props.error}</div>
     </S.Container>

@@ -6,8 +6,6 @@ export const scrollContainer = (
 ) => {
   const currentDiv = divRef.current;
 
-  console.log(currentDiv?.offsetWidth);
-
   const offSetWidth = currentDiv!.offsetWidth * 0.8;
 
   if (direction === 'left') {
