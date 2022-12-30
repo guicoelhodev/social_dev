@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100%;
-  min-height: calc(${(props) => props.theme.maxHeight} - 5rem);
   width: 100%;
   padding: 1rem;
 
