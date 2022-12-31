@@ -20,6 +20,7 @@ import { useState } from 'react';
 import { ModalLanguages } from '../../components/FC/ModalLanguages';
 import { SimpleCarousel } from '@components/UI/carousels';
 import { languages } from 'src/global/data/languages';
+import { Chat } from '@components/FC/Chat';
 
 const Profile: NextPageAuthenticated = () => {
   const { data } = useSession();
@@ -39,6 +40,7 @@ const Profile: NextPageAuthenticated = () => {
 
   return (
     <Layout>
+      <Chat />
       <S.Container>
         <S.ProfileSection>
           <header>
@@ -85,7 +87,7 @@ const Profile: NextPageAuthenticated = () => {
           <article>
             <h3>Skills</h3>
             <SimpleCarousel>
-              {user?.languages.map((item: string) => {
+              {user?.languages?.map((item: string) => {
                 let currentLanguage = transformLanguagesArray()[item];
                 return (
                   <li title={currentLanguage.name}>
