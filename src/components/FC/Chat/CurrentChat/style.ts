@@ -55,6 +55,7 @@ export const ChatBox = styled.li`
     p {
       font-size: 1rem;
     }
+
     span {
       font-size: 0.8rem;
     }
