@@ -50,6 +50,18 @@ export const ChatBox = styled.li`
     color: #444;
     font-size: 0.7rem;
   }
+
+
+  @media (max-width: 500px) {
+    p {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 0.8rem;
+    }
+  }
+
 `;
 
 export const SendContainer = styled.footer`
