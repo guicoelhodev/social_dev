@@ -104,9 +104,9 @@ html {
   @media (max-width:810px){
     font-size: 14px;
   }
-  @media (max-width: 380px) {
+  /* @media (max-width: 380px) {
     font-size: 12px;
-  }
+  } */
 }
 
 
