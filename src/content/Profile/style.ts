@@ -21,6 +21,7 @@ export const Container = styled.div`
   gap: 1rem;
 
   padding: 1rem;
+  padding-bottom: 4rem;
 `;
 
 export const ProfileSection = styled.section`

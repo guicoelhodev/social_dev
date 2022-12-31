@@ -10,12 +10,14 @@ import * as S from './style';
 import { NextPageAuthenticated } from '@auth';
 import Link from 'next/link';
 import { Layout } from '@components/UI/Layout';
+import { Chat } from '@components/FC/Chat';
 
 const Home: NextPageAuthenticated = () => {
   const { theme, themeToggler } = useContext(ThemeContext);
 
   return (
     <Layout>
+      <Chat />
       <S.Container>
         <Head>
           <title>Social Dev | Advice</title>
