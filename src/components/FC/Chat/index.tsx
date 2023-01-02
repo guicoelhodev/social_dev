@@ -9,7 +9,7 @@ import { SearchFriends } from './SearchFriends';
 import { listFriendsActiveMock } from './tmpMocks';
 
 import { UserActionsContext } from '@context/userActions';
-import { handleChatState } from 'src/reducers/globalComponentsReducer/actions';
+import { handleChatStateActions } from 'src/reducers/globalComponentsReducer/actions';
 
 import * as S from './style';
 
@@ -28,7 +28,9 @@ export const Chat: React.FC = () => {
       <S.Header open={globalComponentsState.chat}>
         <p>Chat</p>
 
-        <button onClick={() => dispatchGlobalComponents(handleChatState())}>
+        <button
+          onClick={() => dispatchGlobalComponents(handleChatStateActions())}
+        >
           <BsChevronUp />
         </button>
       </S.Header>

@@ -3,6 +3,7 @@ import { UserActionsContext } from '@context/userActions';
 import React, { useContext, useMemo } from 'react';
 import { useState } from 'react';
 import { languages } from 'src/global/data/languages';
+import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer/actions';
 
 import * as S from './style';
 
@@ -48,7 +49,9 @@ export const ModalLanguages: React.FC = () => {
 
   return (
     <Modal
-      setModalState={dispatchGlobalComponents(handleLanguagesUser())}
+      handleModalState={() =>
+        dispatchGlobalComponents(handleUserLanguagesActions())
+      }
       title="Favorite tools"
     >
       <S.Container>

@@ -19,7 +19,7 @@ import {
 } from 'react-icons/ai';
 import { useRouter } from 'next/router';
 import { UserActionsContext } from '@context/userActions';
-import { handleChatState } from 'src/reducers/globalComponentsReducer/actions';
+import { handleChatStateActions } from 'src/reducers/globalComponentsReducer/actions';
 
 interface ILayout {
   children: ReactNode;
@@ -62,7 +62,7 @@ export const Layout: React.FC<ILayout> = ({ children, fill }) => {
     {
       title: 'Chat',
       icon: <BsFillChatDotsFill />,
-      onClick: () => dispatchGlobalComponents(handleChatState()),
+      onClick: () => dispatchGlobalComponents(handleChatStateActions()),
     },
   ];
 
