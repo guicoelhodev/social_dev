@@ -10,6 +10,16 @@ export const Container = styled.aside`
   flex-direction: column;
   gap: 1rem;
 
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
   @media (max-width: 1000px) {
     display: none;
   }

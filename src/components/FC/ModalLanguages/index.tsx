@@ -38,13 +38,10 @@ export const ModalLanguages: React.FC = () => {
     } else {
       let userJson = JSON.parse(tmpUser);
       userJson = { ...userJson, languages: languagesSelected };
-      return localStorage?.setItem(
-        '@USER_CREDENTIALS',
-        JSON.stringify(userJson)
-      );
+      localStorage?.setItem('@USER_CREDENTIALS', JSON.stringify(userJson));
     }
 
-    dispatchGlobalComponents(handleLanguagesUser());
+    dispatchGlobalComponents(handleUserLanguagesActions());
   };
 
   return (
