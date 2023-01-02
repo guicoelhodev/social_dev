@@ -1,13 +1,37 @@
-import { FC, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { ThemeContextProvider } from './theme';
-
-interface IGlobalContext {
+import { UserActionsProvider } from './userActions';
+interface MultiProviderProps {
   children: ReactNode;
 }
-export const GlobalProvider: FC<IGlobalContext> = ({ children }) => {
-  return (
-    <>
-      <ThemeContextProvider>{children}</ThemeContextProvider>
-    </>
-  );
-};
+
+const providers = [ThemeContextProvider, UserActionsProvider];
+
+export const MultiProvider: React.FC<MultiProviderProps> = ({ children }) => (
+  <>
+    {providers.reduceRight((acc, Comp) => {
+      return <Comp>{acc}</Comp>;
+    }, children)}
+  </>
+);
+
+/*
+ If you want to add provider by props:
+
+ interface MultiProviderProps {
+  providers: Array<React.JSXElementConstructor<React.PropsWithChildren<unknown>>
+  >;
+  children: ReactNode;
+}
+
+export const MultiProvider: React.FC<MultiProviderProps> = ({
+  providers = [],
+  children,
+}) => (
+  <>
+    {providers.reduceRight((acc, Comp) => {
+      return <Comp>{acc}</Comp>;
+    }, children)}
+  </>
+);
+ */
