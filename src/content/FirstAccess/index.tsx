@@ -11,7 +11,8 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs';
 import { ThemeContext } from '@context/theme';
 import { ModalLanguages } from '@components/FC/ModalLanguages';
-import { parse } from 'path';
+import { UserActionsContext } from '@context/userActions';
+import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer/actions';
 
 type IFirstAccess = z.infer<typeof schema>;
 
@@ -28,7 +29,8 @@ const schema = z.object({
 const FirstAccess: NextPageAuthenticated = () => {
   const [showContent, setShowContent] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
-  const [languagesModal, setLanguagesModal] = useState(false);
+  const { globalComponentsState, dispatchGlobalComponents } =
+    useContext(UserActionsContext);
 
   const container = useRef<HTMLDivElement>(null);
   const { theme, setTheme } = useContext(ThemeContext);
@@ -88,8 +90,6 @@ const FirstAccess: NextPageAuthenticated = () => {
   useEffect(() => {
     navigateToHomePage();
   }, []);
-
-  console.log('errors', errors);
 
   return (
     <S.Container>
@@ -158,12 +158,14 @@ const FirstAccess: NextPageAuthenticated = () => {
               </S.ButtonMode>
 
               <S.LanguagesModal>
-                <button onClick={() => setLanguagesModal(true)}>
+                <button
+                  onClick={() =>
+                    dispatchGlobalComponents(handleUserLanguagesActions())
+                  }
+                >
                   Add languages
                 </button>
-                {languagesModal && (
-                  <ModalLanguages setState={setLanguagesModal} />
-                )}
+                {globalComponentsState.languages && <ModalLanguages />}
               </S.LanguagesModal>
             </S.View>
           </S.ViewContainer>
