@@ -1,4 +1,5 @@
 import { Chat } from '@components/FC/Chat';
+import { InternalUserArticle } from '@pages/Home/InternalUserArticle';
 import { NextPage } from 'next';
 import styled from 'styled-components';
 
@@ -7,12 +8,14 @@ const Container = styled.div`
   width: 100%;
   display: grid;
   place-items: center;
+
+  padding: 1rem;
 `;
 
 const Playground: NextPage = () => {
   return (
     <Container>
-      <Chat />
+      <InternalUserArticle shared={false} />
     </Container>
   );
 };
