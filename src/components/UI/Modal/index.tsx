@@ -3,14 +3,14 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import * as S from './style';
 
 interface IModal {
-  setModalState: Dispatch<SetStateAction<boolean>>;
+  handleModalState: any;
   title: string;
   children: ReactNode;
   aspectRatio?: number;
   maxWidth?: string;
 }
 export const Modal: React.FC<IModal> = ({
-  setModalState,
+  handleModalState,
   title,
   children,
   maxWidth,
@@ -22,10 +22,7 @@ export const Modal: React.FC<IModal> = ({
         <header>
           <h3>{title}</h3>
 
-          <button
-            title="Close modal"
-            onClick={() => setModalState((prev) => !prev)}
-          >
+          <button title="Close modal" onClick={() => handleModalState()}>
             <AiOutlineCloseCircle />
           </button>
         </header>

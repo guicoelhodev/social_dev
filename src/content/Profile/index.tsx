@@ -1,30 +1,23 @@
 import { NextPageAuthenticated } from '@auth';
 import { useSession } from 'next-auth/react';
-import {
-  DiAngularSimple,
-  DiJava,
-  DiJavascript1,
-  DiReact,
-  DiApple,
-  DiAws,
-} from 'react-icons/di';
 
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import * as S from './style';
 import { AiFillEdit } from 'react-icons/ai';
 import { Layout } from '@components/UI/Layout';
 import { NetworkList } from './NetworkList';
 import { RepositoryList } from './RepositoryList';
-import { Modal } from '@components/UI/Modal';
-import { useState } from 'react';
 import { ModalLanguages } from '../../components/FC/ModalLanguages';
 import { SimpleCarousel } from '@components/UI/carousels';
 import { languages } from 'src/global/data/languages';
 import { Chat } from '@components/FC/Chat';
+import { UserActionsContext } from '@context/userActions';
+import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer/actions';
 
 const Profile: NextPageAuthenticated = () => {
   const { data } = useSession();
-  const [languagesModal, setLanguagesModal] = useState(false);
+  const { globalComponentsState, dispatchGlobalComponents } =
+    useContext(UserActionsContext);
 
   const user = useMemo(() => {
     if (typeof window !== 'undefined') {
@@ -90,13 +83,18 @@ const Profile: NextPageAuthenticated = () => {
               {user?.languages?.map((item: string) => {
                 let currentLanguage = transformLanguagesArray()[item];
                 return (
-                  <li title={currentLanguage.name}>
-                    {<currentLanguage.icon />}
+                  <li title={currentLanguage?.name}>
+                    {currentLanguage && <currentLanguage.icon />}
                   </li>
                 );
               })}
             </SimpleCarousel>
-            <S.EditBtn size="sm" onClick={() => setLanguagesModal(true)}>
+            <S.EditBtn
+              size="sm"
+              onClick={() =>
+                dispatchGlobalComponents(handleUserLanguagesActions())
+              }
+            >
               <AiFillEdit />
             </S.EditBtn>
           </article>
@@ -105,7 +103,7 @@ const Profile: NextPageAuthenticated = () => {
         <RepositoryList />
         <NetworkList />
 
-        {languagesModal && <ModalLanguages setState={setLanguagesModal} />}
+        {globalComponentsState.languages && <ModalLanguages />}
       </S.Container>
     </Layout>
   );

@@ -1,17 +1,17 @@
 import { Modal } from '@components/UI/Modal';
-import React, { Dispatch, SetStateAction, useMemo } from 'react';
+import { UserActionsContext } from '@context/userActions';
+import React, { useContext, useMemo } from 'react';
 import { useState } from 'react';
 import { languages } from 'src/global/data/languages';
+import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer/actions';
 
 import * as S from './style';
 
-interface IModalLanguages {
-  setState: Dispatch<SetStateAction<boolean>>;
-}
-
-export const ModalLanguages: React.FC<IModalLanguages> = ({ setState }) => {
+export const ModalLanguages: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [languagesSelected, setLanguagesSelected] = useState(['']);
+  const { globalComponentsState, dispatchGlobalComponents } =
+    useContext(UserActionsContext);
 
   let filteredLanguages = languages.filter((item) =>
     item.name.includes(inputValue)
@@ -38,14 +38,22 @@ export const ModalLanguages: React.FC<IModalLanguages> = ({ setState }) => {
     } else {
       let userJson = JSON.parse(tmpUser);
       userJson = { ...userJson, languages: languagesSelected };
-      localStorage.setItem('@USER_CREDENTIALS', JSON.stringify(userJson));
+      return localStorage?.setItem(
+        '@USER_CREDENTIALS',
+        JSON.stringify(userJson)
+      );
     }
 
-    setState(false);
+    dispatchGlobalComponents(handleLanguagesUser());
   };
 
   return (
-    <Modal setModalState={setState} title="Favorite tools">
+    <Modal
+      handleModalState={() =>
+        dispatchGlobalComponents(handleUserLanguagesActions())
+      }
+      title="Favorite tools"
+    >
       <S.Container>
         <S.SearchContainer>
           <input
@@ -59,7 +67,7 @@ export const ModalLanguages: React.FC<IModalLanguages> = ({ setState }) => {
               <S.Checkbox
                 type="checkbox"
                 defaultChecked={
-                  userSession?.languages.includes(lang.name) ? true : false
+                  userSession?.languages?.includes(lang.name) ? true : false
                 }
                 onChange={({ target }) => {
                   if (target.checked)

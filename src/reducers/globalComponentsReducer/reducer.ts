@@ -15,7 +15,10 @@ export const globalComponentsReducer = (
     case ActionsGlobalComponents.HANDLE_ADD_FRIEND: {
       return { ...state, addFriend: !state.addFriend };
     }
+    case ActionsGlobalComponents.HANDLE_LANGUAGES_STATE: {
+      return { ...state, languages: !state.languages };
+    }
     default:
-      state;
+      return state;
   }
 };

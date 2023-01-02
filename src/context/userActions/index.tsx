@@ -5,6 +5,7 @@ export type IGlobalComponents = {
   chat: boolean;
   createPost: boolean;
   addFriend: boolean;
+  languages: boolean;
 };
 type IUserActionsContext = {
   globalComponentsState: any;
@@ -24,6 +25,7 @@ export const UserActionsProvider: FC<IUserActionsProvider> = ({ children }) => {
       addFriend: false,
       chat: false,
       createPost: false,
+      languages: false,
     }
   );
 
