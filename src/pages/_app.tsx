@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { GlobalProvider } from '../context';
+import { MultiProvider } from '../context';
 import { SessionProvider } from 'next-auth/react';
 import { GlobalStyles } from '@style/globalStyle';
 import { AuthComponent } from 'src/global/auth/AuthComponent';
@@ -18,7 +18,7 @@ export default function App({
   getHeightPhone();
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalProvider>
+      <MultiProvider>
         <SessionProvider session={session}>
           <GlobalStyles />
 
@@ -30,7 +30,7 @@ export default function App({
             <Component {...pageProps} />
           )}
         </SessionProvider>
-      </GlobalProvider>
+      </MultiProvider>
     </QueryClientProvider>
   );
 }
