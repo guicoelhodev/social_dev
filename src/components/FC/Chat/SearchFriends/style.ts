@@ -46,7 +46,8 @@ export const List = styled.ul`
   align-items: flex-start;
   justify-content: center;
 
-  grid-template-columns: repeat(auto-fit, 3rem);
+  grid-template-columns: repeat(3, 3rem);
+  justify-content: space-evenly;
   grid-template-rows: repeat(auto-fit, 3rem);
   gap: 1rem;
 
@@ -54,6 +55,12 @@ export const List = styled.ul`
   padding-top: 1rem;
 
   @media (max-width: 500px) {
-    height: calc(50vh);
+    height: 42rem;
+    grid-template-columns: repeat(3, 4rem);
+    grid-template-rows: repeat(auto-fit, 4rem);
+
+    button {
+      width: 4rem;
+    }
   }
 `;

@@ -23,6 +23,7 @@ export const PageContainer = styled.div`
   }
 `;
 export const NavigatePages = styled.nav`
+  z-index: 3;
   background-color: ${(props) => props.theme.primaryBg};
   padding-top: 2rem;
   position: fixed;
@@ -47,7 +48,9 @@ export const NavigatePages = styled.nav`
   }
 
   @media (max-width: 810px) {
-    top: calc(var(--doc-height) - 4rem);
+    background-color: ${(props) => props.theme.secondaryBg};
+    bottom: 0;
+    position: sticky;
     width: 100%;
     height: 4rem;
     padding: 0;

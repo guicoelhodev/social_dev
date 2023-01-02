@@ -18,6 +18,8 @@ import {
   AiOutlineUsergroupAdd,
 } from 'react-icons/ai';
 import { useRouter } from 'next/router';
+import { UserActionsContext } from '@context/userActions';
+import { handleChatState } from 'src/reducers/globalComponentsReducer/actions';
 
 interface ILayout {
   children: ReactNode;
@@ -25,6 +27,8 @@ interface ILayout {
 
 export const Layout: React.FC<ILayout> = ({ children }) => {
   const { theme, themeToggler } = useContext(ThemeContext);
+  const { globalComponentsState, dispatchGlobalComponents } =
+    useContext(UserActionsContext);
 
   const router = useRouter();
 
@@ -57,9 +61,14 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
     {
       title: 'Chat',
       icon: <BsFillChatDotsFill />,
-      onClick: () => alert('clicked '),
+      onClick: () => dispatchGlobalComponents(handleChatState()),
     },
   ];
+
+  const getActiveClassName = (title: string) => {
+    if (title === 'Chat') return globalComponentsState.chat ? 'active' : '';
+    return title === activeTab ? 'active' : '';
+  };
 
   return (
     <S.Container>
@@ -80,7 +89,7 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
               item.onClick();
             }}
             title={item.title}
-            className={item.title === activeTab ? 'active' : ''}
+            className={getActiveClassName(item.title)}
           >
             {item.icon}
 
