@@ -56,5 +56,11 @@ export const List = styled.ul`
 
   @media (max-width: 500px) {
     height: 42rem;
+    grid-template-columns: repeat(3, 4rem);
+    grid-template-rows: repeat(auto-fit, 4rem);
+
+    button {
+      width: 4rem;
+    }
   }
 `;
