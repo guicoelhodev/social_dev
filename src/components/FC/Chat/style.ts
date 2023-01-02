@@ -4,12 +4,12 @@ import styled from 'styled-components';
 interface IChatState {
   open: boolean;
 }
-export const Container = styled(motion.section)`
+
+export const Container = styled(motion.section)<IChatState>`
   z-index: 2;
   position: fixed;
   bottom: 0;
   right: 6rem;
-
   overflow: hidden;
 
   background-color: ${(props) => props.theme.secondaryBg};
@@ -21,17 +21,19 @@ export const Container = styled(motion.section)`
   flex-direction: column;
 
   border: 1px solid ${(props) => props.theme.primaryColor};
-  border-bottom-color: inherit;
+  border-bottom-color: ${(props) => props.theme.secondaryBg};
 
   @media (max-width: 810px) {
-    bottom: 5rem;
+    display: ${(props) => (props.open ? 'block' : 'none !important')};
+    bottom: 4rem;
     right: 0;
   }
 
   @media (max-width: 500px) {
+    border: 0;
     max-width: none;
-    max-height: 60vh;
-    border-color: inherit;
+    max-height: 50rem;
+    border-color: ${(props) => props.theme.primaryBg};
     border-radius: 0;
   }
 `;

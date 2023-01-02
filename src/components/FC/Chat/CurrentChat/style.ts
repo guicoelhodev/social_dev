@@ -11,7 +11,11 @@ export const Container = styled(motion.div)`
   align-content: space-between;
 
   @media (max-width: 500px) {
-    grid-template-rows: 2rem calc(50vh - 5rem) 3rem;
+    grid-template-rows: 2rem calc(40rem) 3rem;
+
+    footer {
+      padding-bottom: 0;
+    }
   }
 `;
 
@@ -73,7 +77,7 @@ export const SendContainer = styled.footer`
   gap: 0.4rem;
 
   input {
-    border-color: ${(props) => props.theme.terciaryColor};
+    border: 1px solid ${(props) => props.theme.terciaryColor};
     flex: 1;
     width: 100%;
     background-color: ${(props) => props.theme.primaryBg};
