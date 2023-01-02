@@ -55,6 +55,7 @@ export const ChatBox = styled.li`
     font-size: 0.7rem;
   }
 
+
   @media (max-width: 500px) {
     p {
       font-size: 1rem;
@@ -64,6 +65,7 @@ export const ChatBox = styled.li`
       font-size: 0.8rem;
     }
   }
+
 `;
 
 export const SendContainer = styled.footer`
