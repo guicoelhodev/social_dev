@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface IPageContainer {
+  fill?: boolean;
+}
+
 export const Container = styled.div`
   position: relative;
   background-color: ${(props) => props.theme.primaryBg};
@@ -8,8 +12,8 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const PageContainer = styled.div`
-  max-width: 80rem;
+export const PageContainer = styled.div<IPageContainer>`
+  max-width: ${(props) => (props.fill ? 'none' : '80rem')};
   padding-right: 4rem;
   margin: 0 auto;
   min-height: calc(${(props) => props.theme.maxHeight} - 4rem);

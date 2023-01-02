@@ -23,9 +23,10 @@ import { handleChatState } from 'src/reducers/globalComponentsReducer/actions';
 
 interface ILayout {
   children: ReactNode;
+  fill?: boolean;
 }
 
-export const Layout: React.FC<ILayout> = ({ children }) => {
+export const Layout: React.FC<ILayout> = ({ children, fill }) => {
   const { theme, themeToggler } = useContext(ThemeContext);
   const { globalComponentsState, dispatchGlobalComponents } =
     useContext(UserActionsContext);
@@ -80,7 +81,7 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
           <Image src={SocialLogo} alt="aaa" />
         </aside>
       </S.Header>
-      <S.PageContainer>{children}</S.PageContainer>
+      <S.PageContainer fill={fill}>{children}</S.PageContainer>
       <S.NavigatePages>
         {navList.map((item) => (
           <S.ButtonNav
