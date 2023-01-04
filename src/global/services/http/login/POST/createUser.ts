@@ -1,3 +1,5 @@
+import { API } from '@services/api_services';
+
 interface ISignInParams {
   firstAccess: string;
   password: string;
@@ -18,7 +20,7 @@ interface ICreateUserParams {
   firstAccess: boolean;
   lastName?: string;
   photo: string | null;
-  github_username: string | null;
+  githubUsername: string | null;
   skills?: string | null;
 }
 export const createUser = async (paramsSign: ISignInParams) => {
@@ -34,13 +36,19 @@ export const createUser = async (paramsSign: ISignInParams) => {
     photo: paramsSign.image,
     confirmPassword: paramsSign.confirmPassword,
     password: paramsSign.password,
-    github_username:
+    githubUsername:
       paramsSign.github_username !== 'null'
         ? paramsSign.github_username!
         : null,
     skills: paramsSign.languages ? paramsSign.languages : null,
   };
 
-  console.log('foi', params);
-  return true;
+  const { data } = await API.post('/users/addUser', params);
+
+  console.log('params', params);
+
+  console.log('thats te response', data);
+  return data;
 };
+
+// users/addUser

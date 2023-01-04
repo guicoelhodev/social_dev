@@ -38,7 +38,7 @@ export const FirstAccessProvider: FC<IFirstAccessProvider> = ({ children }) => {
     let session = await getSession();
     //console.log('data:', Object.assign(session!.user, data));
 
-    console.log('data', data);
+    // console.log('data', data);
 
     signIn('credentials', {
       ...Object.assign(session!.user, data),

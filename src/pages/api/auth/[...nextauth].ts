@@ -57,7 +57,9 @@ const authOptions: NextAuthOptions = {
       }
 
       if (user && user?.method === 'createUser') {
-        await createUser(user as any);
+        const result = await createUser(user as any);
+
+        token.user = result;
       }
 
       return Promise.resolve(token);
