@@ -23,6 +23,9 @@ export const ThemeStep: React.FC<IThemeStep> = ({ hookForm }) => {
     setTheme(mode);
   };
 
+  const handleLanguages = (languages: string[]) => {
+    return hookForm.setValue('languages', languages.join('-'));
+  };
   return (
     <S.View>
       <h3>What theme do you prefer?</h3>
@@ -48,7 +51,9 @@ export const ThemeStep: React.FC<IThemeStep> = ({ hookForm }) => {
         >
           Add languages
         </button>
-        {globalComponentsState.languages && <ModalLanguages />}
+        {globalComponentsState.languages && (
+          <ModalLanguages handleLanguages={handleLanguages} />
+        )}
       </S.LanguagesModal>
     </S.View>
   );
