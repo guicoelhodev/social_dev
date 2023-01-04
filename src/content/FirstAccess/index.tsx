@@ -40,8 +40,8 @@ const FirstAccess: NextPageAuthenticated = () => {
       let userContent = localStorage.getItem('@USER_CREDENTIALS');
 
       if (userContent && !JSON.parse(userContent).firstAccess)
-        return Router.push('/');
-      setShowContent(true);
+        // return Router.push('/');
+        setShowContent(true);
       return;
     }
   };
@@ -87,9 +87,9 @@ const FirstAccess: NextPageAuthenticated = () => {
     setTheme(mode);
   };
 
-  useEffect(() => {
-    navigateToHomePage();
-  }, []);
+  // useEffect(() => {
+  //   navigateToHomePage();
+  // }, []);
 
   return (
     <S.Container>
