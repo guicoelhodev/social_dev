@@ -10,7 +10,8 @@
       "@utilis/*": ["src/utils/*"],
       "@auth": ["src/@types/auth.d.ts"],
       "@services/*": ["src/global/services/*"],
-      "@lottie/*": ["src/global/lottie/*"]
+      "@lottie/*": ["src/global/lottie/*"],
+      "@http/*": ["src/global/services/http/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

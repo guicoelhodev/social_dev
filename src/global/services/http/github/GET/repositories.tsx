@@ -1,4 +1,4 @@
-import { GITHUB_API } from 'src/global/services/github_api';
+import { GITHUB_API } from '@services/api_services';
 import { useQuery } from 'react-query';
 
 type IGithubRepo = {
