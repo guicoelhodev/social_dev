@@ -6,15 +6,16 @@ import React, { useEffect } from 'react';
 import { AiFillBook } from 'react-icons/ai';
 import { TiArrowForward } from 'react-icons/ti';
 import * as S from './style';
+import { useSession } from 'next-auth/react';
 
 let user = {
   github_account: 'gs.coelho@outlook.com',
 };
 
 export const RepositoryList: React.FC = () => {
-  const { data } = useGetRepositories();
-
-  let user = localStorage.getItem('@USER_CREDENTIALS');
+  const { data: session } = useSession();
+  const { data } = useGetRepositories(session?.user.github_username);
+  // let user = localStorage.getItem('@USER_CREDENTIALS');
 
   return (
     <S.Container>
@@ -22,7 +23,7 @@ export const RepositoryList: React.FC = () => {
         <h3>Repositories</h3>
         <span>{data?.length}</span>
       </header>
-      {user && JSON.parse(user).github_username ? (
+      {user && session?.user.languages ? (
         <SimpleCarousel>
           {data?.map((item) => (
             <S.Repository key={item.id}>

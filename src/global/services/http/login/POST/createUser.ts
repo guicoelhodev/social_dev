@@ -48,7 +48,7 @@ export const createUser = async (paramsSign: ISignInParams) => {
   console.log('params', params);
 
   console.log('thats te response', data);
-  return data;
+  return { ...data, firstAccess: false };
 };
 
 // users/addUser

@@ -5,7 +5,8 @@ declare module 'next-auth' {
     user: {
       firstAccess: boolean;
       github_username?: string;
-    } & DefaultSession['user'];
+    } & DefaultSession['user'] &
+      any;
   }
   interface User extends DefaultUser {
     method?: string;

@@ -13,7 +13,7 @@ import * as S from './style';
 
 const FirstAccess: NextPageAuthenticated = () => {
   const { data: session } = useSession();
-  const [showContent, setShowContent] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   const navigateToHomePage = (firstAccess: boolean) => {
     return !firstAccess ? Router.push('/') : setShowContent;

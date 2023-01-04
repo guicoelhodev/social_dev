@@ -1,4 +1,5 @@
 import { GITHUB_API } from '@services/api_services';
+import { getSession } from 'next-auth/react';
 import { useQuery } from 'react-query';
 
 type IGithubRepo = {
@@ -12,10 +13,10 @@ type IGithubRepo = {
   language: string;
   topics: string[];
 };
-export const useGetRepositories = () => {
-  let user = localStorage.getItem('@USER_CREDENTIALS');
+export const useGetRepositories = (username: string) => {
+  // let user = localStorage.getItem('@USER_CREDENTIALS');
 
-  let username = user ? JSON.parse(user).github_username : '';
+  // let username = user ? JSON.parse(user).github_username : '';
 
   const { data, isLoading, isError } = useQuery<IGithubRepo[]>(
     'repositories',
