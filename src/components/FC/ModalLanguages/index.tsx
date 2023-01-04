@@ -7,7 +7,12 @@ import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer
 
 import * as S from './style';
 
-export const ModalLanguages: React.FC = () => {
+interface IModalLanguages {
+  handleLanguages: (arg1: string[]) => void;
+}
+export const ModalLanguages: React.FC<IModalLanguages> = ({
+  handleLanguages,
+}) => {
   const [inputValue, setInputValue] = useState('');
   const [languagesSelected, setLanguagesSelected] = useState(['']);
   const { globalComponentsState, dispatchGlobalComponents } =
@@ -26,23 +31,23 @@ export const ModalLanguages: React.FC = () => {
     } else return null;
   }, [window]);
 
-  const handleLanguagesUser = () => {
-    let tmpUser = localStorage.getItem('@USER_CREDENTIALS');
+  // const handleLanguagesUser = () => {
+  //   // let tmpUser = localStorage.getItem('@USER_CREDENTIALS');
 
-    if (!tmpUser) {
-      let userLanguage = {
-        languages: languagesSelected,
-      };
+  //   // if (!tmpUser) {
+  //   //   let userLanguage = {
+  //   //     languages: languagesSelected,
+  //   //   };
 
-      localStorage.setItem('@USER_CREDENTIALS', JSON.stringify(userLanguage));
-    } else {
-      let userJson = JSON.parse(tmpUser);
-      userJson = { ...userJson, languages: languagesSelected };
-      localStorage?.setItem('@USER_CREDENTIALS', JSON.stringify(userJson));
-    }
+  //   //   localStorage.setItem('@USER_CREDENTIALS', JSON.stringify(userLanguage));
+  //   // } else {
+  //   //   let userJson = JSON.parse(tmpUser);
+  //   //   userJson = { ...userJson, languages: languagesSelected };
+  //   //   localStorage?.setItem('@USER_CREDENTIALS', JSON.stringify(userJson));
+  //   // }
 
-    dispatchGlobalComponents(handleUserLanguagesActions());
-  };
+  //   dispatchGlobalComponents(handleUserLanguagesActions());
+  // };
 
   return (
     <Modal
@@ -83,8 +88,13 @@ export const ModalLanguages: React.FC = () => {
         </S.GridIcons>
 
         <footer>
-          <button onClick={handleLanguagesUser}>
-            <p>Salvar</p>
+          <button
+            onClick={() => {
+              handleLanguages(languagesSelected);
+              return dispatchGlobalComponents(handleUserLanguagesActions());
+            }}
+          >
+            <p>Save</p>
           </button>
         </footer>
       </S.Container>
