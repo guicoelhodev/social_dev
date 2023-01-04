@@ -1,11 +1,16 @@
 import React, { ReactNode } from 'react';
+import { FirstAccessProvider } from './firstAccess';
 import { ThemeContextProvider } from './theme';
 import { UserActionsProvider } from './userActions';
 interface MultiProviderProps {
   children: ReactNode;
 }
 
-const providers = [ThemeContextProvider, UserActionsProvider];
+const providers = [
+  ThemeContextProvider,
+  FirstAccessProvider,
+  UserActionsProvider,
+];
 
 export const MultiProvider: React.FC<MultiProviderProps> = ({ children }) => (
   <>
