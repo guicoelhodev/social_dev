@@ -4,9 +4,19 @@ import NextAuth from 'next-auth/next';
 
 import GithubProvider from 'next-auth/providers/github';
 import LinkedInProvider from 'next-auth/providers/linkedin';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { createUser } from '@services/http/login/POST/createUser';
 
 const authOptions: NextAuthOptions = {
   providers: [
+    CredentialsProvider({
+      name: 'credentials',
+      type: 'credentials',
+      credentials: {},
+      async authorize(credentials: any, req) {
+        return credentials;
+      },
+    }),
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
@@ -45,6 +55,11 @@ const authOptions: NextAuthOptions = {
 
         token.user = tmpUser;
       }
+
+      if (user && user?.method === 'createUser') {
+        await createUser(user as any);
+      }
+
       return Promise.resolve(token);
     },
     async session({ session, token }) {
