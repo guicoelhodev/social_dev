@@ -13,11 +13,14 @@ const arr = [false, true, false, false, true, true, true, true];
 const Home: NextPageAuthenticated = () => {
   const { globalComponentsState } = useContext(UserActionsContext);
 
+  const handleLanguages = (langs: string[]) => console.log(langs);
   return (
     <Layout fill={true}>
       <Chat />
 
-      {globalComponentsState.languages && <ModalLanguages />}
+      {globalComponentsState.languages && (
+        <ModalLanguages handleLanguages={handleLanguages} />
+      )}
       <S.Container>
         <div>
           <BasicUserInfo />

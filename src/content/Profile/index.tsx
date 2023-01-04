@@ -31,6 +31,7 @@ const Profile: NextPageAuthenticated = () => {
     return languages.reduce((prev, acc) => ({ ...prev, [acc.name]: acc }), {});
   };
 
+  const handleLanguages = (langs: string[]) => console.log(langs);
   return (
     <Layout>
       <Chat />
@@ -103,7 +104,9 @@ const Profile: NextPageAuthenticated = () => {
         <RepositoryList />
         <NetworkList />
 
-        {globalComponentsState.languages && <ModalLanguages />}
+        {globalComponentsState.languages && (
+          <ModalLanguages handleLanguages={handleLanguages} />
+        )}
       </S.Container>
     </Layout>
   );
