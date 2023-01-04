@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useId, FC } from 'react';
-import { UseFormRegister } from 'react-hook-form';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import * as S from './style';
 
 interface ITextInput {
@@ -25,6 +25,7 @@ export const TextInput: FC<ITextInput> = (props) => {
         id={props.id ? props.id : inputId}
         {...props.register}
         placeholder={props.placeholder}
+        defaultValue={props.defaultValue}
       />
       <div>{props.error}</div>
     </S.Container>
