@@ -18,7 +18,10 @@ export const PasswordStep: React.FC<IPasswordStep> = ({ hookForm }) => {
   } = hookForm;
 
   useEffect(() => {
-    setValue('github_username', session?.user.github_username);
+    setValue(
+      'github_username',
+      session?.user.github_username ? session?.user.github_username : null
+    );
   }, [session]);
 
   return (
@@ -30,20 +33,24 @@ export const PasswordStep: React.FC<IPasswordStep> = ({ hookForm }) => {
         register={register('job')}
         error={errors.job?.message as string}
       />
-      <TextInput
+      {/* <TextInput
         label="github username"
         placeholder="ex: guicoelhodev"
         type="text"
         register={register('github_username')}
         error={errors.github_username?.message as string}
-      />
+      /> */}
       <PasswordInput
         label="Password*"
-        register={register('password', {
-          onBlur: () => console.log('aslsdshuh'),
-        })}
+        register={register('password')}
         placeholder="*********"
         error={errors.password?.message as string}
+      />
+      <PasswordInput
+        label="Confirm password*"
+        register={register('confirmPassword')}
+        placeholder="*********"
+        error={errors.confirmPassword?.message as string}
       />
     </S.View>
   );
