@@ -7,7 +7,8 @@ const nextConfig = {
     domains: ['media.tenor.com', 'avatars.githubusercontent.com', 'media.licdn.com'],
   },
   env: {
-    URL_APP: process.env.URL_APP
+    URL_APP: process.env.URL_APP,
+    URL_API: process.env.URL_API
   },
 };
 
