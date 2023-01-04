@@ -15,41 +15,42 @@ const authOptions: NextAuthOptions = {
       clientId: process.env.LINKEDIN_CLIENT_ID!,
       clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
     }),
-    // {
-    //   async au(authorize) {
-
-    //     return Promise.resolve(authorize);
-    //   },
-    // },
   ],
+  session: { strategy: 'jwt' },
   pages: {
     signIn: '/login',
     error: '/login',
   },
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async jwt({ account, user, token, profile }) {
       const socialAuth = ['github', 'linkedin'];
-      //console.log('signData', signData);
+
       const params = {
-        email: user.email!,
+        email: user?.email!,
         password: '',
         external: socialAuth.includes(account?.provider!),
       };
-      // const params = {
-      //   email: 'sammonteiro10@gmail.com',
-      //   password: 'jojo',
-      //   external: false,
-      // };
-      const response = await verifyCredentials(params);
-      // credentials = response as any;
-      console.log('aaaaaaaaaaaaaaaaaaa', profile);
 
-      // sessionStorage.setItem('@USER_LOGIN', JSON.stringify(response));
-      return true;
+      const { data, status } = await verifyCredentials(params);
+
+      if (user) {
+        const loginResponse = profile as any;
+
+        let tmpUser = {
+          ...user,
+          id: data.id,
+          github_username: loginResponse?.login,
+          firstAccess: status === 500, // if get error, means that user dont exist on DB
+        };
+
+        token.user = tmpUser;
+      }
+      return Promise.resolve(token);
     },
-    async session(p) {
-      console.log('p', p);
-      return p.session;
+    async session({ session, token }) {
+      session.user = token.user as any;
+
+      return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
