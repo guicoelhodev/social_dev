@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { getSession, signIn } from 'next-auth/react';
 import { createContext, FC, RefObject, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -33,9 +34,18 @@ export const FirstAccessProvider: FC<IFirstAccessProvider> = ({ children }) => {
     }
   };
 
-  const handleSubmitForm = hookForm.handleSubmit((data) =>
-    console.log('data:', data)
-  );
+  const handleSubmitForm = hookForm.handleSubmit(async (data) => {
+    let session = await getSession();
+    //console.log('data:', Object.assign(session!.user, data));
+
+    console.log('data', data);
+
+    signIn('credentials', {
+      ...Object.assign(session!.user, data),
+      method: 'createUser',
+    });
+  });
+
   return (
     <FirstAccessContext.Provider
       value={{
