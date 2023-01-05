@@ -15,10 +15,10 @@ export const BasicUserInfo: React.FC = () => {
   const { data: session } = useSession();
   const { dispatchGlobalComponents } = useContext(UserActionsContext);
 
-  let userStorage =
-    typeof window !== 'undefined'
-      ? localStorage?.getItem('@USER_CREDENTIALS')
-      : null;
+  let user = session?.user;
+  // typeof window !== 'undefined'
+  //   ? localStorage?.getItem('@USER_CREDENTIALS')
+  //   : null;
 
   const transformLanguagesArray: any = () => {
     return languages.reduce((prev, acc) => ({ ...prev, [acc.name]: acc }), {});
@@ -45,10 +45,10 @@ export const BasicUserInfo: React.FC = () => {
                     </span>
                   )}
                 </article>
-                {userStorage && (
+                {user && (
                   <section>
-                    <h4>{session?.user?.name}</h4>
-                    <p>{JSON.parse(userStorage).job}</p>
+                    <h4>{user.name}</h4>
+                    <p>{user.job}</p>
                   </section>
                 )}
               </header>
@@ -73,9 +73,9 @@ export const BasicUserInfo: React.FC = () => {
 
           <S.LanguagesContainer>
             <strong>Languages</strong>
-            {userStorage && JSON.parse(userStorage).languages?.length !== 0 ? (
+            {user.languages && user.languages?.length !== 0 ? (
               <ul>
-                {JSON.parse(userStorage).languages?.map((item: string) => {
+                {user.languages.split('-')?.map((item: string) => {
                   let currentLanguage = transformLanguagesArray()[item];
                   return (
                     <li title={currentLanguage?.name}>
@@ -85,7 +85,7 @@ export const BasicUserInfo: React.FC = () => {
                 })}
               </ul>
             ) : (
-              <p>No language added :(</p>
+              <p>No language added :( </p>
             )}
 
             <Button
