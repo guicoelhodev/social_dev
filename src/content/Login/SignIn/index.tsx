@@ -38,9 +38,9 @@ export const SignIn: React.FC = () => {
 
   const onSubmit = handleSubmit((data) => console.log('data'));
 
-  const handleSign = async () => {
-    await signIn('linkedin', {
-      // callbackUrl: `${process.env.URL_APP}/firstAccess`,
+  const handleSign = async (provider: string) => {
+    await signIn(provider, {
+      callbackUrl: `${process.env.URL_APP}/firstAccess`,
       //redirect: false,
     });
   };
@@ -60,17 +60,11 @@ export const SignIn: React.FC = () => {
       <S.ExternalLogin>
         <p>Sign In with your account</p>
 
-        <button
-          onClick={() =>
-            signIn('github', {
-              // callbackUrl: `${process.env.URL_APP}/firstAccess`,
-            })
-          }
-        >
+        <button onClick={() => handleSign('github')}>
           <AiFillGithub />
         </button>
 
-        <button onClick={handleSign}>
+        <button onClick={() => handleSign('linkedin')}>
           <AiFillLinkedin />
         </button>
       </S.ExternalLogin>

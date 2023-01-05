@@ -15,22 +15,24 @@ import { UserActionsContext } from '@context/userActions';
 import { handleUserLanguagesActions } from 'src/reducers/globalComponentsReducer/actions';
 
 const Profile: NextPageAuthenticated = () => {
-  const { data } = useSession();
+  const { data: session } = useSession();
   const { globalComponentsState, dispatchGlobalComponents } =
     useContext(UserActionsContext);
 
   const user = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      let tmpUser = localStorage.getItem('@USER_CREDENTIALS');
+    return session?.user;
+    // if (typeof window !== 'undefined') {
+    //   let tmpUser = localStorage.getItem('@USER_CREDENTIALS');
 
-      return tmpUser ? JSON.parse(tmpUser) : null;
-    } else return null;
-  }, [window]);
+    //   return tmpUser ? JSON.parse(tmpUser) : null;
+    // } else return null;
+  }, [session]);
 
   const transformLanguagesArray: any = () => {
     return languages.reduce((prev, acc) => ({ ...prev, [acc.name]: acc }), {});
   };
 
+  const handleLanguages = (langs: string[]) => console.log(langs);
   return (
     <Layout>
       <Chat />
@@ -38,7 +40,7 @@ const Profile: NextPageAuthenticated = () => {
         <S.ProfileSection>
           <header>
             <S.AvatarImage
-              src={data?.user?.image ? data.user.image : ''}
+              src={user?.image ? user.image : ''}
               width={120}
               height={120}
               alt="avatar user image"
@@ -52,7 +54,7 @@ const Profile: NextPageAuthenticated = () => {
             <div>
               <aside>
                 <span>Name:</span>
-                <p>{data?.user?.name}</p>
+                <p>{user?.name}</p>
               </aside>
 
               <aside>
@@ -64,7 +66,7 @@ const Profile: NextPageAuthenticated = () => {
             <div>
               <aside>
                 <span>Email:</span>
-                <p>{data?.user?.email}</p>
+                <p>{user?.email}</p>
               </aside>
             </div>
           </S.ProfileInfo>
@@ -80,7 +82,7 @@ const Profile: NextPageAuthenticated = () => {
           <article>
             <h3>Skills</h3>
             <SimpleCarousel>
-              {user?.languages?.map((item: string) => {
+              {user?.languages?.split('-').map((item: string) => {
                 let currentLanguage = transformLanguagesArray()[item];
                 return (
                   <li title={currentLanguage?.name}>
@@ -103,7 +105,9 @@ const Profile: NextPageAuthenticated = () => {
         <RepositoryList />
         <NetworkList />
 
-        {globalComponentsState.languages && <ModalLanguages />}
+        {globalComponentsState.languages && (
+          <ModalLanguages handleLanguages={handleLanguages} />
+        )}
       </S.Container>
     </Layout>
   );
