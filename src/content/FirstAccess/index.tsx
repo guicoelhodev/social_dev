@@ -16,7 +16,7 @@ const FirstAccess: NextPageAuthenticated = () => {
   const [showContent, setShowContent] = useState(false);
 
   const navigateToHomePage = (firstAccess: boolean) => {
-    return !firstAccess ? Router.push('/') : setShowContent;
+    return !firstAccess ? Router.push('/') : setShowContent(true);
   };
 
   const container = useRef<HTMLDivElement>(null);
