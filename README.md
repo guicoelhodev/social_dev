@@ -7,23 +7,23 @@
 </div>
 
 <section>
-<article align="center">
+<div align="center">
 
 [![Typescript - 4.8.4](https://img.shields.io/static/v1?label=Typescript&message=4.8.4&color=%2335F8B1)](https://)
 [![Next JS - 13.0.2](https://img.shields.io/static/v1?label=Next+JS&message=13.0.2&color=%2335F8B1)](https://)
 [![Zustand - 4.3.2](https://img.shields.io/static/v1?label=Zustand&message=4.3.2&color=%2335F8B1)](https://)
 [![Next Auth - 4.18.7](https://img.shields.io/static/v1?label=Next%20Auth&message=4.18.7&color=%2335F8B1)](https://)
 
-</article>
+</div>
 
-<article align="center">
+<div align="center">
 
 [![Framer motion - 7.6.12](https://img.shields.io/static/v1?label=Framer+motion&message=7.6.12&color=%2335F8B1)](https://)
 [![Zod - 4.3.2](https://img.shields.io/static/v1?label=Zod&message=4.3.2&color=%2335F8B1)](https://)
 [![React Hook Form - 7.41.0](https://img.shields.io/static/v1?label=React+Hook+Form&message=7.41.0&color=%2335F8B1)](https://)
 [![Vistest - 0.26.2](https://img.shields.io/static/v1?label=Vistest&message=0.26.2&color=%2335F8B1)](https://)
 
-</article>
+</div>
 </section>
 
 <br/>
