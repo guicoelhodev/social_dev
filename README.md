@@ -36,29 +36,11 @@
 </div>
 
 <br/>
-<br/>
 
-<section>
 <h2 align="center">Created by</h2>
 
-</section>
-
 <section style="display:flex; justify-content: center; padding-top:20px; gap:20px;">
-<div class="avatar" target="_blank">
-    <a href="https://github.com/guicoelhodev">
-        <img class="avatar" src="./github/avatar/guicoelhodev.jpg" alt="Frontend developer" width="200" height="200" />
-    </a><br/>
-    <p>Frontend & <br/> Design UI/UX</p>
-
-</div>
-
-<div >
-    <a href="https://github.com/Joao-Pedro15" target="_blank">
-        <img class="avatar" src="./github/avatar/Joao-Pedro15.jpg" alt="Backend developer" width="200" height="200"/>
-    </a>
-    <p>Backend developer &  <br/> devOps</p>
-
-</div>
+    <img src="./github/avatar/authors_readme.png" alt="authors image">
 </section>
 
 <br/>
