@@ -48,7 +48,7 @@ export const RepositoryList: React.FC = () => {
         </SimpleCarousel>
       ) : (
         <aside>
-          <p>Nenhuma conta github conectada :(</p>
+          <p>No github account connected :(</p>
           <GithubButton onClick={() => alert('Logar conta github')} />
         </aside>
       )}

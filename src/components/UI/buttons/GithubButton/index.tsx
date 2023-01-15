@@ -9,7 +9,7 @@ interface IGithubButton {
 export const GithubButton: React.FC<IGithubButton> = ({ text, onClick }) => {
   return (
     <S.Container onClick={onClick}>
-      <p>{text ? text : 'Conectar conta github'}</p>
+      <p>{text ? text : 'Connect github account'}</p>
       <AiFillGithub />
     </S.Container>
   );
