@@ -39,9 +39,9 @@
 
 <h2 align="center">Created by</h2>
 
-<section style="display:flex; justify-content: center; padding-top:20px; gap:20px;">
-    <img src="./github/avatar/authors_readme.png" alt="authors image">
-</section>
+<div align="center">
+<img src="./github/avatar/authors_readme.png" alt="authors image">
+</div>
 
 <br/>
 
