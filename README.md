@@ -1,43 +1,13 @@
-<!-- <h1 align="center">Social Dev</h1>
-
-## Status: In progress ⚠️⚠️
-
-### Go back in a few days if you want to see the readme complete
-
-If you want to see the development app, click <a target="_blank" href="https://social-dev-git-develop-guicoelho-s.vercel.app/">here</a>. -->
-
-<style>
-
-    h2 {
-        margin-top:40px;
-    }
-    .avatar-container {
-        display:flex;
-        justify-content: center;
-        gap:30px;
-        margin-top:20px;
-    }
-
-    a.vatar-container > p {
-        margin-top:10px;
-    }
-    .avatar {
-        width:120px;
-        height: 120px;
-        list-style:none;
-       
-    }
-</style>
-
 <h1 align='center'>Social Dev</h1>
 
-<span align='right'>
+<div align='right'>
 
 [![Hosted with Vercel](https://img.shields.io/badge/Hosted_with-Vercel-blue?logo=github&logoColor=white)](https://social-dev-sandy.vercel.app/ 'Go to homepage site')
-</span>
 
-<section align='center'>
-<article>
+</div>
+
+<section>
+<article align="center">
 
 [![Typescript - 4.8.4](https://img.shields.io/static/v1?label=Typescript&message=4.8.4&color=%2335F8B1)](https://)
 [![Next JS - 13.0.2](https://img.shields.io/static/v1?label=Next+JS&message=13.0.2&color=%2335F8B1)](https://)
@@ -46,7 +16,7 @@ If you want to see the development app, click <a target="_blank" href="https://s
 
 </article>
 
-<article>
+<article align="center">
 
 [![Framer motion - 7.6.12](https://img.shields.io/static/v1?label=Framer+motion&message=7.6.12&color=%2335F8B1)](https://)
 [![Zod - 4.3.2](https://img.shields.io/static/v1?label=Zod&message=4.3.2&color=%2335F8B1)](https://)
@@ -60,10 +30,10 @@ If you want to see the development app, click <a target="_blank" href="https://s
 <h3 align='center'>A modern wep app focused on being a social network focused on the technology community </h3>
 <br/>
 
-<span align='center'>
+<div align='center'>
 
 [![Status - In progress](https://img.shields.io/badge/Status-In%20Progress-blue?style=for-the-badge)](/docs/ 'Go to project documentation')
-</span>
+</div>
 
 <br/>
 <br/>
@@ -73,21 +43,22 @@ If you want to see the development app, click <a target="_blank" href="https://s
 
 </section>
 
-<section class="avatar-container">
-<span class="avatar" target="_blank">
+<section style="display:flex; justify-content: center; padding-top:20px; gap:20px;">
+<div class="avatar" target="_blank">
     <a href="https://github.com/guicoelhodev">
-        <img class="avatar" src="./github/avatar/guicoelhodev.jpg" alt="Frontend developer" />
+        <img class="avatar" src="./github/avatar/guicoelhodev.jpg" alt="Frontend developer" width="200" height="200" />
     </a><br/>
     <p>Frontend & <br/> Design UI/UX</p>
 
-</span>
-<span >
+</div>
+
+<div >
     <a href="https://github.com/Joao-Pedro15" target="_blank">
-        <img class="avatar" src="./github/avatar/Joao-Pedro15.jpg" alt="Backend developer" />
+        <img class="avatar" src="./github/avatar/Joao-Pedro15.jpg" alt="Backend developer" width="200" height="200"/>
     </a>
     <p>Backend developer &  <br/> devOps</p>
 
-</span>
+</div>
 </section>
 
 <br/>
@@ -129,13 +100,12 @@ If you go to the development link it might be broken, to see the most stable ver
 
 ### Frontend
 
-
 - [x] React JS
 - [x] Next JS
 - [x] Typescript
 - [x] Next Auth
 - [x] Zustand
-- [x] Zod 
+- [x] Zod
 - [x] Framer motion
 
 ### Backend
@@ -144,7 +114,7 @@ If you go to the development link it might be broken, to see the most stable ver
 - [x] Prisma
 - [x] Typescript
 - [x] Multer
-- [x] Firebase 
+- [x] Firebase
 
 <br/>
 <p>If you want to see backend repository, <a href="https://github.com/Joao-Pedro15/API_SOCIAL_DEV" target="_blank">click here</a></p>
