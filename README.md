@@ -27,7 +27,7 @@
 </section>
 
 <br/>
-<h3 align='center'>A modern wep app focused on being a social network focused on the technology community </h3>
+<h3 align='center'>A modern web app focused on being a social network focused on the technology community </h3>
 <br/>
 
 <div align='center'>
