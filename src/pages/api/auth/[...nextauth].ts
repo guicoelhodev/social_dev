@@ -57,7 +57,7 @@ const authOptions: NextAuthOptions = {
       }
 
       if (user && user?.method === 'createUser') {
-        //const result = await createUser(user as any);
+        await createUser(user as any);
 
         token.user = { ...user, firstAccess: false };
       }
