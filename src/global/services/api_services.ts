@@ -5,5 +5,9 @@ export const GITHUB_API = axios.create({
 });
 
 export const API = axios.create({
-  baseURL: 'https://apisocialdev-production.up.railway.app',
+  baseURL: process.env.URL_API,
+});
+
+export const TABNEWS_API = axios.create({
+  baseURL: 'https://www.tabnews.com.br/api/v1',
 });

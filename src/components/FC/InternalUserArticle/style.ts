@@ -9,7 +9,6 @@ interface ICard {
 }
 
 export const Container = styled.article`
-  max-width: 50rem;
   width: 100%;
 
   background-color: ${(props) => props.theme.secondaryBg};
