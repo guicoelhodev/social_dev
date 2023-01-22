@@ -1,6 +1,6 @@
-import { Chat } from '@components/FC/Chat';
-import { InternalUserArticle } from '@pages/Home/InternalUserArticle';
+import { Search } from '@pages/Home/Search';
 import { NextPage } from 'next';
+
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -15,7 +15,7 @@ const Container = styled.div`
 const Playground: NextPage = () => {
   return (
     <Container>
-      <InternalUserArticle shared={false} />
+      <Search />
     </Container>
   );
 };
